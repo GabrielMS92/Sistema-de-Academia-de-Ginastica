@@ -1,0 +1,24 @@
+from conexion.oracle_queries import OracleQueries
+
+class Relatorios:
+       
+    def __init__(self, conexion_data):
+        self.__conexion_data = conexion_data
+
+    def _executar_sql_arquivo(self, caminho_arquivo):
+
+        try:
+            with open(caminho_arquivo, 'r') as file:
+                sql_query = file.read()
+        except FileNotFoundError:
+            print(f"Erro: Arquivo SQL não encontrado em {caminho_arquivo}")
+            return None, None
+
+        conn = OracleQueries(**self.__conexion_data)
+        if conn.conectar():
+            resultados = conn.executar_query(sql_query)
+            colunas = [col[0] for col in conn.get_cursor().description] if conn.get_cursor() and conn.get_cursor().description else []
+            conn.desconectar()
+            return colunas, resultados
+        
+        return None, None

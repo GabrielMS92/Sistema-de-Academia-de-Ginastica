@@ -2,6 +2,9 @@
 
 Este projeto é uma aplicação de console em Python para gerenciar Alunos e Instrutores de uma academia, como parte da disciplina de Banco de Dados. O sistema permite operações de CRUD e a geração de relatórios, conectando-se a um banco de dados Oracle.
 
+# Link para Video no Youtube
+https://youtu.be/Yp7c6A62wfY
+
 ## Pré-requisitos
 Para executar este projeto, você precisará ter instalado em seu ambiente Linux:
 
